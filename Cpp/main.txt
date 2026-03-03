@@ -1,0 +1,60 @@
+class Node{
+    int data;
+    Node *next;
+
+    Node(int data){
+        data = data;
+        next = nullptr;
+    }
+}
+
+Node *head = nullptr;
+Node *tail = nullptr;
+
+void insert(){
+    Node* ni = new Node(int data);
+    ni->next = head;
+    head = ni;
+    if(tail == nullptr){
+        tail = ni;
+    }
+}
+
+void insertAtPos(int index){
+     Node *getPos(int index){
+        Node * temp = head;
+        int n = index;
+        for(int i = 0; i<n; i++){
+            temp = temp->next;
+        }
+        return temp;
+     }
+
+     Node *prev = getPos(index);
+     Node *ni = new Node(int data);
+     ni->next = prev->next;
+     prev->next = ni;
+}
+
+
+
+void display(){
+    Node* temp = head;
+    if(temp != nullptr){
+        cout << temp->data;
+        temp = temp->next;
+    }
+}
+
+void reverse(){
+    Node* prev = nullptr;
+    Node* curr = head;
+
+    while(curr != nullptr){
+        Node* ni = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = ni;
+    }
+    return prev;
+}

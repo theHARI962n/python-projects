@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+long long MOD = 1e9+7;
+
+long long triplet_count(long long N){
+
+    long long a = N;
+    long long b = N+1;
+    long long c = 2*N+1;
+
+    if(a%2 == 0 ){
+        a = a/2;
+    }else{
+        b = b/2;
+    }
+
+    if(a%3 == 0){
+        a = a/3;
+    }else if (b%3 == 0){
+        b = b/3;
+    }
+    else{
+        c = c/3;
+    }
+
+    long long result = (a%MOD * b%MOD) %MOD;
+    return (result * (c % MOD ))%MOD;
+}
